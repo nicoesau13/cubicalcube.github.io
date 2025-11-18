@@ -1,60 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Welcome to nicoesau13's GitHub Pages</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gaming Hub</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: sans-serif;
-      background: #fafaff;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
     }
     h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5em;
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
-    ul {
-      margin-bottom: 2em;
-      padding-left: 1em;
+    .game-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
-    .scroll-frame {
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      max-height: 600px;
-      overflow: auto;
-      padding: 0;
-      background: #fff;
+    .game-card {
+      background: #1e1e1e;
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      transition: transform 0.2s;
     }
-    .scroll-frame iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      background: #fafaff;
-      display: block;
+    .game-card:hover {
+      transform: scale(1.05);
+      border-color: #00ffcc;
+    }
+    .game-card a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to nicoesau13's GitHub Pages</h1>
-    <p>This site contains various fun files and projects. Try the classic <strong>2048 game</strong> below, or explore other files:</p>
-    <ul>
-      <li><a href="2048.html">Play 2048 Game (fullscreen)</a></li>
-      <!-- Add more files below as needed -->
-      <li><a href="README.md">README.md</a></li>
-      <li><a href="index.html">index.html</a></li>
-    </ul>
-    <div class="scroll-frame">
-      <iframe src="2048.html" title="2048 Game"></iframe>
-    </div>
-  </div>
+  <h1>🎮 Welcome to the Gaming Hub</h1>
+  <div class="game-grid" id="gameGrid"></div>
+
+  <script>
+    const folders = [
+      { name: "2048 Classic", path: "2048 game/" },
+      { name: "DAO 2048", path: "dao-2048-main/" }
+      // Add more folders here as needed
+    ];
+
+    // Shuffle folders
+    const shuffled = folders.sort(() => Math.random() - 0.5);
+
+    const grid = document.getElementById("gameGrid");
+    shuffled.forEach(folder => {
+      const card = document.createElement("div");
+      card.className = "game-card";
+      card.innerHTML = `
+        <h3>${folder.name}</h3>
+        <a href="${folder.path}index.html" target="_blank">Play Now</a>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
 </body>
 </html>
